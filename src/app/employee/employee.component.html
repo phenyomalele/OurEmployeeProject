@@ -1,7 +1,7 @@
-<nav class = "navbar navbar-light bg-dark">
+<nav class = "navbar navbar-light">
     <div class = "container-fluid">
-        <h2 class="text-light primary py-3">Employee Management System</h2>
-
+        <h2 class="text-light primary py-3">Employee Management System <img src="../../assets/icons/logo.svg" alt="" width="35" height="" class="d-inline-block align-text-top"></h2>
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <div class = "d-flex">
             <button class ="btn btn-success"(click)="add()" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Employee</button>&nbsp;
         
@@ -11,8 +11,8 @@
 
 <div class="container">
 <!----table-->
-<table class ="table mt-4">
-    <thead>
+<table class ="table mt-4 table-secondary">
+    <thead class = "thread-dark">
         <tr>
             <th scope="col">Employee ID</th>
             <th scope="col">Name</th>
@@ -34,7 +34,7 @@
             <td>15 April 2022</td>
             <td>Full Stack Developer</td>
             <td>
-                <button class="btn btn-info"(click)="update()" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../../assets/icons/edit.svg" width="25" ></button>
+                <button class="btn btn-info"(click)="update()" data-bs-toggle="modal" data-bs-target="#exampleModal2"><img src="../../assets/icons/edit.svg" width="25" ></button>
             </td>
             <td><button class="btn btn-danger"><img src="../../assets/icons/delete.svg" width="25" ></button></td>
         </tr>
@@ -42,17 +42,17 @@
 </table>
 </div>
 
-
+<footer>
+  <p>Author: Potpie Group</p>
+</footer>
   
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div style="background: blue;"class="modal-header">
-          <h5 style="color: aliceblue;font-size: 26px;margin-left: 62px; font-weight: 620;" class="modal-title" id="exampleModalLabel">Add New Employee</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style = "background-color:white">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div style="background: rgb(28, 26, 26);"class="modal-header">
+          <h5 style="color: white;font-size: 26px;margin-left: 110px; font-weight: 620; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" class="modal-title" id="exampleModalLabel">Add New Employee</h5>
+        
         </div>
         <div class="modal-body">
             <form [formGroup]="formvalue">
@@ -88,11 +88,62 @@
 <br>
               </form>
         </div>
-        <div style ="background: blue;"class="modal-footer">
-          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-          <button *ngIf="showadd" type="button" class="btn btn-success">Add</button>
-          <button *ngIf="showupdate" type="button" class="btn btn-success">Update</button>
+        <div style ="background: rgb(28, 26, 26);"class="modal-footer">
+          <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+          <button *ngIf="showadd" type="button" class="btn btn-success1">Add</button>
+          <button *ngIf="showupdate" type="button" class="btn btn-success2">Update</button>
         </div>
       </div>
     </div>
   </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div style="background: rgb(28, 26, 26);"class="modal-header">
+            <h5 style="color: white;font-size: 26px;margin-left: 155px; font-weight: 620; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" class="modal-title" id="exampleModalLabel">Edit Employee</h5>
+           
+          </div>
+          <div class="modal-body">
+              <form [formGroup]="formvalue">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Name</label>
+                    <input type="name" formControlName= "firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+                  <small *ngIf="formvalue.get('firstName')?.invalid && formvalue.get('firstName')?.touched" class="text-danger">Name is required</small>
+                  </div>
+  <br>
+                  <div class="form-group">
+                      <label for="exampleInputEmail1">Surname</label>
+                      <input type="email" formControlName= "lastName"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter surname">
+                      <small *ngIf="formvalue.get('lastName')?.invalid && formvalue.get('lastName')?.touched" class="text-danger">Surname is required</small>  
+                  </div>
+  <br>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email</label>
+                      <input type="email" formControlName= "email"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                      <small *ngIf="formvalue.get('email')?.invalid && formvalue.get('email')?.touched" class="text-danger">Email is required</small>  
+                  </div>
+  <br>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Department</label>
+                      <input type="email" formControlName= "department" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter department">
+                      <small *ngIf="formvalue.get('department')?.invalid && formvalue.get('department')?.touched" class="text-danger">Department is required</small>  
+                  </div>
+  <br>               
+                  <div class="form-group">
+                  <label for="exampleInputEmail1">Contact No.</label>
+                  <input type="email" formControlName= "contactNo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter contact number">
+                  <small *ngIf="formvalue.get('contactNo')?.invalid && formvalue.get('contactNo')?.touched" class="text-danger">Contact no. is required</small>    
+              </div>
+  <br>
+                </form>
+          </div>
+          <div style ="background: rgb(28, 26, 26);"class="modal-footer">
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+            <button *ngIf="showadd" type="button" class="btn btn-success1">Add</button>
+            <button *ngIf="showupdate" type="button" class="btn btn-success2">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { employeedata } from './employee.model';
+import { Title } from '@angular/platform-browser';
+
+declare var $: any;
 
 @Component({
   selector: 'app-employee',
@@ -10,7 +13,7 @@ import { employeedata } from './employee.model';
 export class EmployeeComponent implements OnInit{
 
   showadd!: boolean;
-  showupdate!: boolean
+  showupdate!: boolean;
 
   studentmodelobj: employeedata= new employeedata
 
@@ -30,17 +33,23 @@ export class EmployeeComponent implements OnInit{
 add(){
 this.showadd = true;
 this.showupdate = false;
+
 }
 
 //update function
 update(){
 this.showadd = false;
 this.showupdate = true;
+
+}
+
+closeModal(){
+
 }
 
 //delete
 
-addEmployee(){
+addEmployee(): void{
   this.studentmodelobj.firstName = this.formvalue.value.firstName;
   this.studentmodelobj.lastName = this.formvalue.value.lastName;
   this.studentmodelobj.email = this.formvalue.value.email;
